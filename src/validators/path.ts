@@ -19,7 +19,9 @@ export function validatePath(filePath: string, rule: Rule, config: ConfigJson) {
 
   const isFolderNode =
     configRule.children != null || configRule.type === "folder";
+  const isFileNode = configRule.extension || configRule.type == "file";
 
+  if (!isFile && isFileNode) return;
   if (isFile && isFolderNode) return;
 
   if (isFile) {
