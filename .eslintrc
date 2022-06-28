@@ -1,0 +1,7 @@
+{
+  "parserOptions": {
+    "sourceType": "script"
+  },
+  "extends": ["plugin:eslint-plugin/recommended"],
+  "rules": {}
+}
