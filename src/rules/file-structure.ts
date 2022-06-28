@@ -18,7 +18,7 @@ const fileStructureRule = function (
   return {
     Program(node) {
       const configPath = `${context.getCwd()}/${
-        context.settings["repo-strucutre/config-path"]
+        context.settings["repo-structure/config-path"]
       }`;
 
       const config = JSON.parse(fs.readFileSync(configPath, "utf-8"));
