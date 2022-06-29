@@ -31,6 +31,7 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
+          git config --global push.followTags true
 
       - name: Install dependencies
         run: yarn --non-interactive --frozen-lockfile --ignore-scripts
