@@ -6,13 +6,13 @@ on:
       version:
         description: "Choose version to bump"
         required: true
-        default: "minor"
+        default: "patch"
         type: choice
         options:
-          - "major"
-          - "minor"
           - "patch"
-
+          - "minor"
+          - "major"
+          
 jobs:
   publish:
     runs-on: ubuntu-latest
