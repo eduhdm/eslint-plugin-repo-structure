@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-repo-structure",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Validade folders and files structure and names given a config file",
   "main": "lib/index.js",
   "scripts": {
