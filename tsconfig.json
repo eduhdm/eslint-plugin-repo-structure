@@ -6,16 +6,16 @@
     "preserveConstEnums": true,
     "outDir": "./lib",
     "sourceMap": true,
-    "types": ["node"],
+    "types": ["node", "jest", "eslint"],
     "moduleResolution": "node",
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "#/*": ["./*"]
+      "#/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.test.ts"]
+  "include": ["src/**/*", "node_modules/@types"],
+  "exclude": ["node_modules"]
 }

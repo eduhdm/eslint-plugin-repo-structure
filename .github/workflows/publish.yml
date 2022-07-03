@@ -12,7 +12,7 @@ on:
           - "patch"
           - "minor"
           - "major"
-          
+
 jobs:
   publish:
     runs-on: ubuntu-latest

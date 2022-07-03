@@ -15,7 +15,7 @@ export default function validateExtension(
       );
     }
   } else {
-    if (nodeConfig.extension.some((ext) => nodeName.endsWith(ext))) {
+    if (!nodeConfig.extension.some((ext) => nodeName.endsWith(ext))) {
       throw new Error(
         `File name ${nodeName} should end with ${nodeConfig.extension}`
       );
