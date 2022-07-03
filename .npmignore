@@ -3,3 +3,4 @@ tests/**
 babel.config.js
 jest.config.js
 .eslintrc
+.github

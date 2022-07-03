@@ -36,6 +36,9 @@ jobs:
       - name: Install dependencies
         run: yarn --non-interactive --frozen-lockfile --ignore-scripts
 
+      - name: Build lib
+        run: yarn build
+
       - name: Publish new version
         run: |
           npm version ${{ github.event.inputs.version }}
