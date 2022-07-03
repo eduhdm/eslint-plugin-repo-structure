@@ -2,7 +2,7 @@ import { Rule as EslintRule } from "eslint";
 
 import * as fs from "fs";
 import { validatePath } from "#/validators/path";
-import { ConfigJson } from "../types/rule-config";
+import { ConfigJson } from "#/types/rule-config";
 
 function isIgnoredFile(filePath: string, config: ConfigJson) {
   if (config.ignorePatterns == null) return false;

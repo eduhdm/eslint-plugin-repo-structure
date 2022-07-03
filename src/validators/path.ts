@@ -1,5 +1,5 @@
-import { FinalValidationError } from "../errors/errors";
-import { Rule, IdRule, ConfigJson } from "../types/rule-config";
+import { FinalValidationError } from "#/errors/errors";
+import { Rule, IdRule, ConfigJson } from "#/types/rule-config";
 import validateCase from "./case";
 import validateExtension from "./extension";
 import validateName from "./name";

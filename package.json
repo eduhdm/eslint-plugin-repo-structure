@@ -4,12 +4,9 @@
   "description": "Validade folders and files structure and names given a config file",
   "main": "lib/index.js",
   "scripts": {
-    "build": "tsc --build",
+    "build": "tsc && tsc-alias",
     "lint": "eslint . --ext .ts",
     "test": "jest"
-  },
-  "_moduleAliases": {
-    "#": "lib"
   },
   "keywords": [
     "repo structure",
@@ -18,9 +15,7 @@
   ],
   "author": "",
   "license": "MIT",
-  "dependencies": {
-    "module-alias": "^2.2.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/preset-env": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
@@ -31,6 +26,7 @@
     "eslint-plugin-eslint-plugin": "^4.2.0",
     "jest": "^28.1.2",
     "ts-node": "^10.8.2",
+    "tsc-alias": "^1.6.11",
     "typescript": "^4.7.3"
   }
 }
