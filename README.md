@@ -31,12 +31,16 @@ $ npm i --dev eslint-plugin-repo-structure
 }
 ```
 
-2. Create a JSON config file defining the rules that defines the folder structure and naming rules for your modules.
+2. Create a JSON file with the folder and file structure that should be followed. For each module, you can also define rules for naming patterns,
+   case and extensions that are allowed.
+
+   You can also define patterns for files or folders that should be excluded from validation.
 
    Example:
 
 ```jsonc
 {
+  "ignorePatterns": ["path/to/ignore-module/**.js", "**/.*Models.js"],
   "root": {
     "children": [
       {
@@ -85,6 +89,7 @@ $ npm i --dev eslint-plugin-repo-structure
 ```
 
 3. Rules
+
    Here is the list of attributes that can be created inside a rule module:
 
 | rule      | type               | example                                                                    | description                                                                                  |
@@ -97,3 +102,12 @@ $ npm i --dev eslint-plugin-repo-structure
 
 When defining a list of rules for a folder children, an error or warning is raised if a given file or folder does
 not satisfy any of the constraint of a rule.
+
+### Using it with multiple extensions
+
+it is possible to run eslint on files with various extensions. To do so, you
+must pass an --ext option with the desired extensions list.
+
+```bsh
+$ npm eslint . --ext .js,.ts,.tsx,.png,.css
+```
