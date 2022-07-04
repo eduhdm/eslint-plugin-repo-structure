@@ -12,11 +12,17 @@ function isIgnoredFile(filePath: string, config: ConfigJson) {
   );
 }
 
-const fileStructureRule = function (
+export function fileStructureNode(filePath: string, config: ConfigJson) {
+  if (isIgnoredFile(filePath, config)) return;
+
+  validatePath(filePath, config["root"], config);
+}
+
+export default function fileStructureRule(
   context: EslintRule.RuleContext
 ): EslintRule.RuleListener {
   return {
-    Program(node) {
+    Program: function (node) {
       const configPath = `${context.getCwd()}/${
         context.settings["repo-structure/config-path"]
       }`;
@@ -28,10 +34,8 @@ const fileStructureRule = function (
         "root/"
       );
 
-      if (isIgnoredFile(filePath, config)) return;
-
       try {
-        validatePath(filePath, config["root"], config);
+        fileStructureNode(filePath, config);
       } catch (error) {
         context.report({
           node,
@@ -40,6 +44,4 @@ const fileStructureRule = function (
       }
     },
   };
-};
-
-export default fileStructureRule;
+}

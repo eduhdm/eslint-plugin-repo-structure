@@ -1,7 +1,4 @@
 import validateName from "#/validators/name";
-// import "@types/jest";
-
-// jest.mock("module-alias/register");
 
 describe("validate name", () => {
   it("should validate fixed name", () => {

@@ -7,7 +7,7 @@ export interface ConfigJson {
 export type Rule = DeclarationRule | IdRule;
 
 export interface DeclarationRule {
-  id: never;
+  id?: never;
   name?: string;
   extension?: string | string[];
   case?: "PascalCase" | "camelCase" | "snake_case" | "kebab-case" | "dash-case";

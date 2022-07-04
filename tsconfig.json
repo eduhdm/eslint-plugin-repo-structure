@@ -13,9 +13,8 @@
     "emitDecoratorMetadata": true,
     "baseUrl": ".",
     "paths": {
-      "#/*": ["./src/*"]
+      "#/*": ["src/*"]
     }
   },
-  "include": ["src/**/*", "node_modules/@types"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*", "node_modules/@types", "tests/**/*.test.ts"]
 }

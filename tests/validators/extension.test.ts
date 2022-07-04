@@ -1,7 +1,4 @@
 import validateExtension from "#/validators/extension";
-// import "@types/jest";
-
-// jest.mock("module-alias/register");
 
 describe("validate extension", () => {
   it("should now throw is extension is empty", () => {

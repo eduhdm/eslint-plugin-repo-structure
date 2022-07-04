@@ -1,7 +1,5 @@
-// import "@types/jest";
 import validateCase from "#/validators/case";
-
-// jest.mock("module-alias/register");
+import { DeclarationRule } from "#/types/rule-config";
 
 describe("validate case", () => {
   it("should not validate if case is empty", () => {
@@ -16,7 +14,7 @@ describe("validate case", () => {
     ["dash-case", "order-controller"],
   ])(
     "should not throw when case is %s and name is %s",
-    (caseType: string, moduleName: string) => {
+    (caseType: DeclarationRule["case"], moduleName: string) => {
       expect(() => validateCase(moduleName, { case: caseType })).not.toThrow();
     }
   );
@@ -29,7 +27,7 @@ describe("validate case", () => {
     ["dash-case", "order_controller"],
   ])(
     "should throw for invalid scenario: case is %s and name is: %s",
-    (caseType: string, moduleName: string) => {
+    (caseType: DeclarationRule["case"], moduleName: string) => {
       expect(() => validateCase(moduleName, { case: caseType })).toThrow(
         `Case is invalid: ${moduleName}, it should have ${caseType}`
       );
@@ -44,7 +42,7 @@ describe("validate case", () => {
     ["dash-case", "order-controller.js"],
   ])(
     "should not throw for valid scenario with file extension: case is %s and name is: %s",
-    (caseType: string, moduleName: string) => {
+    (caseType: DeclarationRule["case"], moduleName: string) => {
       expect(() => validateCase(moduleName, { case: caseType })).not.toThrow();
     }
   );
