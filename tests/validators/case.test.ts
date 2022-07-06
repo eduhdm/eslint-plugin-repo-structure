@@ -29,7 +29,7 @@ describe("validate case", () => {
     "should throw for invalid scenario: case is %s and name is: %s",
     (caseType: DeclarationRule["case"], moduleName: string) => {
       expect(() => validateCase(moduleName, { case: caseType })).toThrow(
-        `Case is invalid: ${moduleName}, it should have ${caseType}`
+        `Folder name error: Case is invalid: ${moduleName}, it should have ${caseType}`
       );
     }
   );

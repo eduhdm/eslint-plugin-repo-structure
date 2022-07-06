@@ -1,4 +1,5 @@
-import { DeclarationRule } from "../types/rule-config";
+import { RuleError } from "#/errors/errors";
+import { DeclarationRule } from "#/types/rule-config";
 
 export default function validateExtension(
   nodeName: string,
@@ -10,15 +11,18 @@ export default function validateExtension(
 
   if (typeof nodeConfig.extension === "string") {
     if (!nodeName.endsWith(nodeConfig.extension)) {
-      throw new Error(
-        `File name ${nodeName} should end with ${nodeConfig.extension}`
-      );
+      throwExtensionInvalid(nodeName, nodeConfig.extension);
     }
   } else {
     if (!nodeConfig.extension.some((ext) => nodeName.endsWith(ext))) {
-      throw new Error(
-        `File name ${nodeName} should end with ${nodeConfig.extension}`
-      );
+      throwExtensionInvalid(nodeName, nodeConfig.extension);
     }
   }
+}
+
+function throwExtensionInvalid(nodeName: string, extension: string | string[]) {
+  throw new RuleError(
+    `File name ${nodeName} should end with ${extension}`,
+    `end with ${extension}`
+  );
 }
