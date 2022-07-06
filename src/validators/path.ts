@@ -68,7 +68,7 @@ function validateRulesList(
 
   let errorMessage = `${nodeType} ${nodeName} is invalid: It should `;
   let countAddedMessages = 0;
-  console.log("validate list", nodesList, filePath, config);
+
   for (const childNode of nodesList) {
     try {
       validatePath(filePath, childNode, config);
@@ -87,7 +87,6 @@ function validateRulesList(
 
         countAddedMessages++;
       }
-      console.log("error msg", errorMessage);
     }
   }
 
