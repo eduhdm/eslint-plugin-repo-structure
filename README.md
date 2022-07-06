@@ -31,12 +31,11 @@ $ npm i --dev eslint-plugin-repo-structure
 }
 ```
 
-2. Create a JSON file with the folder and file structure that should be followed. For each module, you can also define rules for naming patterns,
-   case and extensions that are allowed.
+2. Create a JSON file with the folder and file structure that should be followed. For each module, you can also define rules for naming patterns, case and extensions that are allowed.
 
-   You can also define patterns for files or folders that should be excluded from validation.
+   To exclude files from validation, you can pass them to `ignorePatterns` attribute.
 
-   Example:
+Example:
 
 ```jsonc
 {
@@ -86,6 +85,39 @@ $ npm i --dev eslint-plugin-repo-structure
     }
   }
 }
+```
+
+You can also define it as a yaml file, example:
+
+```yaml
+ignorePatterns:
+  - path/to/ignore-module/**.js
+  - "**/.*Models.js"
+
+root:
+  children:
+    - name: src
+      children:
+        - name: controllers
+          children:
+            - case: PascalCase
+              name: "/^.*Controller$/"
+              extension: ".ts"
+        - id: services-folder
+
+    - name: tests
+      children:
+        - type: file
+          name: "/^.*\\.test$/"
+          extension: ".ts"
+
+rules:
+  services-folder:
+    name: services
+    children:
+      - case: PascalCase
+        name: "/^.*Service$/"
+        extension: ".ts"
 ```
 
 3. Rules
