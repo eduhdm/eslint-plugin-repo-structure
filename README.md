@@ -122,7 +122,7 @@ rules:
 
 3. Rules
 
-   Here is the list of attributes that can be created inside a rule module:
+   Here is the list of attributes that can be created inside of a rule object:
 
 | rule      | type               | example                                                                    | description                                                                                  |
 | --------- | ------------------ | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
@@ -134,12 +134,3 @@ rules:
 
 When defining a list of rules for a folder children, an error or warning is raised if a given file or folder does
 not satisfy any of the constraint of a rule.
-
-### Using it with multiple extensions
-
-it is possible to run eslint on files with various extensions. To do so, you
-must pass an --ext option with the desired extensions list.
-
-```bsh
-$ npm eslint . --ext .js,.ts,.tsx,.png,.css
-```
