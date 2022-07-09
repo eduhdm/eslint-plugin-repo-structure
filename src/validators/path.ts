@@ -45,15 +45,12 @@ export function validatePath(filePath: string, rule: Rule, config: ConfigJson) {
   validateName(currentNodeName, configRule);
 
   const nextPath = filePath.replace(`${currentNodeName}/`, "");
+  const childrenByFileType = (configRule.children || []).filter((node) =>
+    filterRulesByType(nextPath, node, config)
+  );
 
-  if (configRule.children != null) {
-    validateRulesList(
-      configRule.children.filter((node) =>
-        filterRulesByType(nextPath, node, config)
-      ),
-      nextPath,
-      config
-    );
+  if (childrenByFileType.length !== 0) {
+    validateRulesList(childrenByFileType, nextPath, config);
   }
 }
 
