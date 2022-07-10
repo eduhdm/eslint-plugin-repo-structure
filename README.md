@@ -133,4 +133,19 @@ rules:
 | children  | Rule[] or IdRule[] |                                                                            | This attribute is used to define folders and the rules that their children nodes must follow |
 
 When defining a list of rules for a folder children, an error or warning is raised if a given file or folder does
-not satisfy any of the constraint of a rule.
+not satisfy any of the listed rules.
+
+### Validating multiple file extensions.
+
+Eslint uses JS parsers to interpret the written code, this means that its main purpose is not
+to run on other file extensions. However, if you want to validate the naming and casing for non js files,
+you can do this by using this hacky command:
+
+```
+$ npm eslint --parser ./node_modules/eslint-plugin-repo-structure/parser.js \
+  --rule repo-structure/file-structure:warn \
+  --ext .js,.ts,.tsx,.css,.svg,.yml,.png .
+```
+
+In this command, we override eslint parser so it can read files with other extensions, like .svg, .yml
+or even .png. We also have to specify it to run only the repo structure rule.
