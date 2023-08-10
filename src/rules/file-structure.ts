@@ -4,6 +4,7 @@ import * as fs from "fs";
 
 import { validatePath } from "#/validators/path";
 import { ConfigJson } from "#/types/rule-config";
+import path from "path";
 
 function isIgnoredFile(filePath: string, config: ConfigJson) {
   if (config.ignorePatterns == null) return false;
@@ -33,6 +34,12 @@ function readConfigFile(configPath: string) {
   return config;
 }
 
+export function getNormalizedPath(filePath: string, cwd: string, sep: string) {
+  const rootNormalized = filePath.replace(`${cwd}${sep}`, `root${sep}`);
+  const separatorNormalized = rootNormalized.split(sep).join("/");
+  return separatorNormalized;
+}
+
 export default function fileStructureRule(
   context: EslintRule.RuleContext
 ): EslintRule.RuleListener {
@@ -41,10 +48,11 @@ export default function fileStructureRule(
       const configPath = `${context.getCwd()}/${
         context.settings["repo-structure/config-path"]
       }`;
-      const fileAbsolutePath = context.getPhysicalFilename();
-      const filePath = fileAbsolutePath.replace(
-        `${context.getCwd()}/`,
-        "root/"
+
+      const filePath = getNormalizedPath(
+        context.getPhysicalFilename(),
+        context.getCwd(),
+        path.sep
       );
 
       const config = readConfigFile(configPath);
